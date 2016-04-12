@@ -10,30 +10,12 @@ using CampusManagementSystem.Models;
 
 namespace CampusManagementSystem.Controllers
 {
-    public class AdminController : Controller
+    public class AdminsController : Controller
     {
         private NewwsContext db = new NewwsContext();
-        // GET: Admin
+
+        // GET: Admins
         public ActionResult Index()
-        {
-            if (Session["UserId"] != null)
-            {
-                if (Session["userType"].Equals("Admin"))
-                {
-                    return View();
-                }
-            }
-                
-            return HttpNotFound();
-        }
-
-        public ActionResult Logout()
-        {
-            Session.Abandon();
-            return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult News()
         {
             return View(db.Newws.ToList());
         }
@@ -70,7 +52,7 @@ namespace CampusManagementSystem.Controllers
             {
                 db.Newws.Add(neww);
                 db.SaveChanges();
-                return RedirectToAction("News");
+                return RedirectToAction("Index");
             }
 
             return View(neww);
@@ -102,7 +84,7 @@ namespace CampusManagementSystem.Controllers
             {
                 db.Entry(neww).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("News");
+                return RedirectToAction("Index");
             }
             return View(neww);
         }
@@ -130,7 +112,7 @@ namespace CampusManagementSystem.Controllers
             Neww neww = db.Newws.Find(id);
             db.Newws.Remove(neww);
             db.SaveChanges();
-            return RedirectToAction("News");
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

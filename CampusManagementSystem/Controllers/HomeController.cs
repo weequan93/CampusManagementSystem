@@ -35,9 +35,10 @@ namespace CampusManagementSystem.Controllers
                 {
                     if (userr.Acid_Password.Equals(user.Acid_Password))
                     {
-                        Session["ID"] = user.Id;
+                        Session["userId"] = user.Id;
                         if (userr.Type.Equals("0"))
                         {
+                            Session["userType"] = "Admin";
                             return RedirectToAction("Index", "Admin");
                         }
                         else if (userr.Type.Equals("1"))
