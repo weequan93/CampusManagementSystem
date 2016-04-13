@@ -10,56 +10,18 @@ using CampusManagementSystem.Models;
 
 namespace CampusManagementSystem.Controllers
 {
-    public class HomeController : Controller
+    public class AccountsController : Controller
     {
         private CMSDBContext db = new CMSDBContext();
 
-        // GET: Home
+        // GET: Accounts
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Id,Acid_Password")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                User userr = db.Users.Find(user.Id);
-                if (userr == null)
-                {
-                    return HttpNotFound();
-                }
-                else
-                {
-                    if (userr.Acid_Password.Equals(user.Acid_Password))
-                    {
-                        Session["userId"] = user.Id;
-                        if (userr.Type.Equals("0"))
-                        {
-                            Session["userType"] = "Admin";
-                            return RedirectToAction("Index", "Admin");
-                        }
-                        else if (userr.Type.Equals("1"))
-                        {
-                            return RedirectToAction("Index", "Lecutrer");
-                        }
-                        else if (userr.Type.Equals("3"))
-                        {
-                            return RedirectToAction("Index", "Students");
-                        }
-                    }
-                    return HttpNotFound();
-                    
-                }
-            }
-
-            return View(user);
-        }
-
-        // GET: Home/Details/5
-        public ActionResult Details(string id)
+        // GET: Accounts/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -73,18 +35,19 @@ namespace CampusManagementSystem.Controllers
             return View(user);
         }
 
-        // GET: Home/Create
+        // GET: Accounts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Home/Create
+
+        // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Type,Acid_Password")] User user)
+        public ActionResult Create([Bind(Include = "Id,Type,Acid_Id,Acid_Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -96,8 +59,8 @@ namespace CampusManagementSystem.Controllers
             return View(user);
         }
 
-        // GET: Home/Edit/5
-        public ActionResult Edit(string id)
+        // GET: Accounts/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -111,12 +74,12 @@ namespace CampusManagementSystem.Controllers
             return View(user);
         }
 
-        // POST: Home/Edit/5
+        // POST: Accounts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Type,Acid_Password")] User user)
+        public ActionResult Edit([Bind(Include = "Id,Type,Acid_Id,Acid_Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -127,8 +90,8 @@ namespace CampusManagementSystem.Controllers
             return View(user);
         }
 
-        // GET: Home/Delete/5
-        public ActionResult Delete(string id)
+        // GET: Accounts/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -142,10 +105,10 @@ namespace CampusManagementSystem.Controllers
             return View(user);
         }
 
-        // POST: Home/Delete/5
+        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
             db.Users.Remove(user);

@@ -205,8 +205,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Neww.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -294,6 +296,17 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Logout.cshtml" />
+    <Content Include="Views\Admin\News.cshtml" />
+    <Content Include="Views\Admin\NewwsCreate.cshtml" />
+    <Content Include="Views\Admin\NewwsDelete.cshtml" />
+    <Content Include="Views\Admin\NewwsDetails.cshtml" />
+    <Content Include="Views\Admin\NewwsEdit.cshtml" />
+    <Content Include="Views\Admin\CoursesCreate.cshtml" />
+    <Content Include="Views\Admin\CoursesDelete.cshtml" />
+    <Content Include="Views\Admin\CoursesDetails.cshtml" />
+    <Content Include="Views\Admin\CoursesEdit.cshtml" />
+    <Content Include="Views\Admin\Courses.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
