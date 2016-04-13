@@ -10,107 +10,108 @@ using CampusManagementSystem.Models;
 
 namespace CampusManagementSystem.Controllers
 {
-    public class AdminsController : Controller
+    public class AccountsController : Controller
     {
-        private NewwsContext db = new NewwsContext();
+        private CMSDBContext db = new CMSDBContext();
 
-        // GET: Admins
+        // GET: Accounts
         public ActionResult Index()
         {
-            return View(db.Newws.ToList());
+            return View();
         }
 
-        // GET: Admins/Details/5
+        // GET: Accounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Neww neww = db.Newws.Find(id);
-            if (neww == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(neww);
+            return View(user);
         }
 
-        // GET: Admins/Create
+        // GET: Accounts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admins/Create
+
+        // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Info,Date")] Neww neww)
+        public ActionResult Create([Bind(Include = "Id,Type,Acid_Id,Acid_Password")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Newws.Add(neww);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(neww);
+            return View(user);
         }
 
-        // GET: Admins/Edit/5
+        // GET: Accounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Neww neww = db.Newws.Find(id);
-            if (neww == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(neww);
+            return View(user);
         }
 
-        // POST: Admins/Edit/5
+        // POST: Accounts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Info,Date")] Neww neww)
+        public ActionResult Edit([Bind(Include = "Id,Type,Acid_Id,Acid_Password")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(neww).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(neww);
+            return View(user);
         }
 
-        // GET: Admins/Delete/5
+        // GET: Accounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Neww neww = db.Newws.Find(id);
-            if (neww == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(neww);
+            return View(user);
         }
 
-        // POST: Admins/Delete/5
+        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Neww neww = db.Newws.Find(id);
-            db.Newws.Remove(neww);
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
