@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -205,10 +206,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Classe.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Neww.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Taken.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -244,7 +248,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -280,8 +286,6 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Lecturer\Lecturer_Layout.cshtml" />
     <Content Include="Views\Lecturer\Index.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Student\Student_Layout.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -307,6 +311,26 @@
     <Content Include="Views\Admin\CoursesDetails.cshtml" />
     <Content Include="Views\Admin\CoursesEdit.cshtml" />
     <Content Include="Views\Admin\Courses.cshtml" />
+    <Content Include="Views\Admin\ClassCreate.cshtml" />
+    <Content Include="Views\Admin\ClassEdit.cshtml" />
+    <Content Include="Views\Admin\ClassDetails.cshtml" />
+    <Content Include="Views\Admin\ClassDelete.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\Lecturer_Layout.cshtml" />
+    <Content Include="Views\Admin\Students.cshtml" />
+    <Content Include="Views\Admin\StudentsCreate.cshtml" />
+    <Content Include="Views\Admin\StudentsDelete.cshtml" />
+    <Content Include="Views\Admin\StudentsDetails.cshtml" />
+    <Content Include="Views\Admin\StudentsEdit.cshtml" />
+    <Content Include="Views\Admins\TakenCreate.cshtml" />
+    <Content Include="Views\Admins\TakenDelete.cshtml" />
+    <Content Include="Views\Admins\TakenDetails.cshtml" />
+    <Content Include="Views\Admins\TakenEdit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admin\TakenCreate.cshtml" />
+    <Content Include="Views\Admin\TakenDelete.cshtml" />
+    <Content Include="Views\Admin\TakenDetails.cshtml" />
+    <Content Include="Views\Admin\TakenEdit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
